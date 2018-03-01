@@ -42,3 +42,14 @@ fs.watch(filePath, function() {
 fs.lstat('hi.txt', function(err, stats) {
     console.log(stats.isSymbolicLink());
 });
+// *******************************************************************************
+// Symlink
+var fs = require("fs");
+fs.symlink('hi.txt','linked.txt', function(err,data){
+	if (err) {
+		throw err;
+	}
+	else{
+		console.log('file linked');
+	}
+});
