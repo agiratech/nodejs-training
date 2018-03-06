@@ -1,0 +1,23 @@
+
+var buf1 = Buffer.alloc(10);
+var buf2 = Buffer.alloc(10, 1);
+var buf3 = Buffer.allocUnsafe(10);
+var buf4 = Buffer.from([1, 2, 3]);
+var buf5 = Buffer.from('tést');
+var buf6 = Buffer.from('tést', 'latin1');
+var buf7 = Buffer.allocUnsafeSlow(10);
+console.log(buf1);
+console.log(buf2);
+console.log(buf3);
+console.log(buf4);
+console.log(buf5);
+console.log(buf6);
+console.log(buf7);
+var buf5 = Buffer.from('R');
+console.log(buf5);
+var buf = Buffer.from('rajeshkumarj');
+console.log(buf);
+console.log(buf.toString());
+console.log(buf.toJSON());
+var buf = Buffer.from('rajeshkumarj', 'utf8');
+console.log(buf);
