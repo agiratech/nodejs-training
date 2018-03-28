@@ -1,12 +1,5 @@
-var dbconn = require('../model/dbconnect.js')
-var resjson ={
-    "status": 0,
-    "type": "a",
-    "details": {
-      "description": "",
-      "posts": []
-    }
-  }
+var dbconn = require('../config/dbconnect.js')
+var output = require('../view/display.js')
 
 exports.check = function (req,res,next) {
     var token = req.headers.token
@@ -14,10 +7,8 @@ exports.check = function (req,res,next) {
 		if(err) throw err;
 
 		if (result === null || req.headers.token.length == 0){
-            resjson.details.description ="please login to Continue "
-            resjson.type ="Error"
-            resjson.status = 404
-              res.send(resjson);
+        output.display(0,"please login to Continue",[],[],function(resjson){
+        res.send(resjson)})
         }
     if (result != null) 
         {
