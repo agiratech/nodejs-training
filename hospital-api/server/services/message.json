@@ -1,0 +1,12 @@
+[
+    {
+        "message":"",
+        "status":"404",
+        "error" :"invalid"
+    },
+    {
+        "message":"",
+        "status":"200",
+        "detail" :"success"
+    }
+]
