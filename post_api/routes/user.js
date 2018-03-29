@@ -11,11 +11,10 @@ router.put('/update',auth.check,user_control.user_update);
 
 router.get('/view',auth.check,user_control.user_read);
 
-// router.get('/profile',auth.check,user_control.user_profile);
+router.get('/profile',auth.check,user_control.user_profile);
 
 router.post('/login',user_control.user_login);
 
 router.put('/logout',auth.check,user_control.user_logout);
-
 
 module.exports = router;

@@ -1,13 +1,13 @@
 exports.display = function(err,description,validations,posts,callback){
 	var resjson ={
-  "status": 0,
-  "type": "",
-  "details": {
-    "description": "",
-    "validations": [],
-    "posts": []
-  }
-}
+	  "status": 0,
+	  "type": "",
+	  "details": {
+	    "description": "",
+	    "validations": [],
+	    "posts": []
+	  }
+	}
 	if(err == 1){
 		resjson.status = 200
 		resjson.type = "Success"
