@@ -1,0 +1,12 @@
+[
+    {
+        "message" : "Failure",
+        "status" : 400,
+        "type" : "error"
+    },
+    {
+        "message" : "Successful",
+        "status" : 200,
+        "type" : "success"
+    }
+]
