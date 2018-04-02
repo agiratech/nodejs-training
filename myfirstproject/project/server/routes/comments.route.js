@@ -5,5 +5,6 @@ const router = express.Router();
 
 router.route('/makecomment').post(authentication.check,commentcontrol.makecomment);
 router.route('/updatecomment').post(authentication.check,commentcontrol.updatecomment);
+router.route('/deletecomment').post(authentication.check,commentcontrol.deletecomment);
 
 module.exports = router;
