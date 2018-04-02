@@ -1,4 +1,4 @@
-var dbconn = require('../config/mongoconnect.js')
+var dbconn = require('../config/mongo.connect.js')
 var output = require('../view/display.js')
 
 exports.check = function (req,res,next) {

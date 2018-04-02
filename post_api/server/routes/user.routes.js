@@ -1,5 +1,5 @@
 var auth = require('../service/auth.js')
-var user_control = require('../control/user.controller.js')
+var user_control = require('../controller/user.controller.js')
 var express = require('express');
 var router = express();
 

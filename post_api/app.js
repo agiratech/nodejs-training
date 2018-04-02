@@ -5,10 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var dbconn = require('./config/mongoconnect.js')
-dbconn.connection();
+var dbconn = require('./server/config/mongo.connect.js')
+dbconn.connection();//connects to the mongodb
 
-var index = require('./routes/index');
+var index = require('./server/routes/index.routes');
 
 var app = express();
 

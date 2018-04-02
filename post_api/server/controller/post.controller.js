@@ -6,6 +6,7 @@ var ObjectId = require('mongodb').ObjectId;
 const isHex = require('is-hex')
 var mynewobj = {}
 var validations = []
+//this api will create a post for the logged in user
 function post_create(req,res){
 	var result = res.locals.result
 	var myobj = req.body
@@ -46,6 +47,7 @@ function post_create(req,res){
 		res.send(resjson)})
   }
 }
+//this api will delete the given post if it is created by the same user
 function post_delete(req,res){
 	var myobj = req.body
 	var token = req.headers.token
@@ -73,7 +75,7 @@ function post_delete(req,res){
 					}
 					if(result != null){
 						var qset = {"_id": p_id}
-						post_model.delete("posts",qset,function(err,result){
+						post_model.deletes("posts",qset,function(err,result){
 				 		output.display(1,"Post has been deleted",[],[],function(resjson){
  						res.send(resjson)})
 						})
@@ -87,7 +89,7 @@ function post_delete(req,res){
 	 	res.send(resjson)})
 	}
 }
-
+//this api will show all the posts 
 function post_read(req,res){
 	var result = res.locals.result
 	var token = req.headers.token	
@@ -98,7 +100,7 @@ function post_read(req,res){
 		res.send(resjson)}) 
   })
 }
-
+//this api will update the post details created by the same user
 function post_update(req,res){
 	var validations = []
 	var date = moment().format('LLL');

@@ -1,31 +1,33 @@
 var validator = require('validator');
-exports.first_name = function(check){
+function first_name(check){
 	if(check === '' || check === undefined || !validator.isAlpha(check)){
 		return true
 	}
 	else {return false}
 }
-exports.last_name = function(check){
+function last_name(check){
 	if( !validator.isAlpha(check) && check !=""){
 		return true
 	}
 	else {return false}
 }
-exports.username = function(check){
+function username(check){
 	if(check === '' || check === undefined || check.length < 5){
 		return true
 	}
 	else {return false}
 }
-exports.password = function(check){
+function password(check){
 	if(check === '' || check === undefined || check.length < 5){
 		return true
 	}
 	else {return false}
 }
-exports.title = function(check){
+function title(check){
 	if(check === '' || check === undefined){
 		return true
 	}
 	else {return false}
 }
+
+module.exports = {title,password,username,last_name,first_name}

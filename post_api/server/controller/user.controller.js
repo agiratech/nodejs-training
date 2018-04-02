@@ -4,6 +4,7 @@ var validation = require('../service/validation.js')
 var output = require('../view/display.js')
 var Cryptr = require('cryptr'),
 cryptr = new Cryptr('RajeshKumar');
+//api for login
 function user_login(req,res){
   var myobj = req.body
   myobj.password = cryptr.encrypt(myobj.password)
@@ -36,12 +37,13 @@ function user_login(req,res){
     }
   })
 }
+//the user and the posts created by this user will be deleted
 function user_delete(req,res){
   var result = res.locals.result
   var myobj = req.headers.token
   var myquery = { "token": myobj };
   user_id = result._id
-  user_model.delete("users",myquery,function(){
+  user_model.deletes("users",myquery,function(){
     user_model.deleteposts("users",myquery,function(obj){ 
       console.log(obj.result.n)
       if (obj.result.n === 0) {
@@ -55,6 +57,7 @@ function user_delete(req,res){
     })
   })
 }
+//logout the user by empty the token field
 function user_logout(req,res){
   var token = req.headers.token
   var qset = {"token": token}
@@ -63,6 +66,7 @@ function user_logout(req,res){
   output.display(1,"The user is Logged out Successfully",[],[],function(resjson){
   res.send(resjson)})
 }
+//this will show all the available users
 function user_read(req,res){
   user_model.user_read(function(result) {
     if (result.length > 0 ){
@@ -75,6 +79,7 @@ function user_read(req,res){
     }
   });
 }
+//used to update the user details
 function user_update(req,res){
   var validations = []
   var myobj = req.body
@@ -121,6 +126,7 @@ function user_update(req,res){
     res.send(resjson)})
   }
 }
+//this api will create the new user
 function user_create(req,res){
   var validations = []
   var mynewobj = {}
@@ -171,18 +177,19 @@ function user_create(req,res){
       output.display(0,"",validations,[],function(resjson){
       res.send(resjson)})
     }
-    if (count == 0 && resjson.details.validations.length== 0){
+    if (count == 0 && validations.length== 0){
       mynewobj.password = cryptr.encrypt(myobj.password)
       user_model.create("users",mynewobj)
       output.display(1,"This user account has been Created",[],[],function(resjson){
       res.send(resjson)})
     } 
-    if (count != 0 && resjson.details.validations.length == 0){
+    if (count != 0 && validations.length == 0){
       output.display(0,"please enter only required fields",[],[],function(resjson){
       res.send(resjson)})
     }
   })
 }
+//this will show the user details and all the posts posted by the same user
 function user_profile(req,res,result){
   var user_details
   var myobj = req.headers.token
