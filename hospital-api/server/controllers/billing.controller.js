@@ -12,9 +12,6 @@ var error=require('../services/message')
 
 function billing_create(req,res) {
   var auth_data = res.locals.result;
-  // var patient_name = req.body.patient_name;
-  // var gender = req.body.gender;
-  // var description = req.body.description;
   var doctor_id = auth_data[0]._id;
   req.body.hospital_id = auth_data[0].hospital_id;
   req.body.doctor_id = doctor_id;
@@ -104,6 +101,7 @@ function billing_read(req,res) {
 	else {
 		var searchParam = {"_id":ObjectId(req.body.patient_id)}
 		model.find("patient",searchParam,function(patient_data) {
+			console.log(patient_data)
 			if(patient_data.length==1) {
 				if(auth_data[0].hospital_id.equals(patient_data[0].hospital_id)) {
 					res.json(patient_data)

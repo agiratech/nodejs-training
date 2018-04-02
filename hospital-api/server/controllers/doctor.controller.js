@@ -1,6 +1,4 @@
 'use strict';
-// import Doctor from '../models/doctor.model';
-// var Doctor=require('../models/doctor.model')
 var express = require('express');
 var router = express.Router();
 var app = express();
