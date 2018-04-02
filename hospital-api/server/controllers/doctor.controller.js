@@ -129,7 +129,7 @@ function doctor_update(req, res) {
 	if (validate.email(req.body.new_email)) {
 		var searchParam1 = { email: req.body.new_email }
 		model.find("doctor", searchParam1, function (email_data) {
-			if (email_data.length == 0) {
+			if (auth_data[0].email == req.body.new_email || email_data.length == 0) {
 				if (validate.empty(req.body.name) && validate.alpha(req.body.name) && validate.length(req.body.name)) {
 					if (validate.empty(req.body.designation) && validate.alpha(req.body.designation) && validate.length(req.body.designation)) {
 						if (validate.empty(req.body.password) && validate.length(req.body.password)) {
