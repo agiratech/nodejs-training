@@ -58,6 +58,7 @@ function billing_delete(req, res) {
 	var result = res.locals.result;
 	var doctor_id = result[0]._id;
 	var tolerable = ObjectId("5aaa628e9ae2a2a642b7495c");
+	var discharge = ObjectId("5ac2338220885e40a80de737");
 	if (!validate.mongo_id(req.body.patient_id)) {
 		error[0].message = "you must give a valid patient_id"
 		res.send(error[0])
@@ -67,7 +68,7 @@ function billing_delete(req, res) {
 		model.find("patient", searchParam, function (patient_data) {
 			if (patient_data.length == 1) {
 				if (patient_data[0].doctor_id.equals(doctor_id)) {
-					if (patient_data[0].charge_id.equals(tolerable)) {
+					if (patient_data[0].charge_id.equals(tolerable) || patient_data[0].charge_id.equals(discharge)) {
 						model.delete(searchParam)
 						error[1].message = "patient record deleted"
 						res.send(error[1])
