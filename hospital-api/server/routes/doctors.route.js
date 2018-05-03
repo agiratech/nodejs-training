@@ -5,13 +5,15 @@ var authentication = require('../services/check.authentication')
 
 const router = express.Router();
 
-router.route('/signup')
-  .post(doctorCtrl.signup);
+router.route('/register')
+  .post(doctorCtrl.register);
 router.route('/login')
   .post(doctorCtrl.login);
 router.route('/logout')
   .post(authentication.check, doctorCtrl.logout);
 router.route('/doctor_update')
   .put(authentication.check, doctorCtrl.doctor_update);
+router.route('/hospital_list')
+  .get(doctorCtrl.hospital_list);
 
 module.exports = router;

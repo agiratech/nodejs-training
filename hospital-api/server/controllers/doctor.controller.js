@@ -11,7 +11,7 @@ var ObjectId = require('mongodb').ObjectId
 var validate = require('../services/validation')
 var error = require('../services/message')
 
-function signup(req, res) {
+function register(req, res) {
 	if (validate.alpha(req.body.name) && validate.length(req.body.name) && validate.empty(req.body.name)) {
 		if (validate.mongo_id(req.body.hospital_id)) {
 			var searchParam = { _id: ObjectId(req.body.hospital_id) }
@@ -98,8 +98,9 @@ function login(req, res) {
 						var matchset = { email: req.body.email }
 						var updateset = { token: token1 }
 						model.update("doctor", matchset, updateset)
-						error[1].message = "logged in successfully";
-						res.send(error[1])
+						error[2].token = token1
+						error[2].message = "logged in successfully";
+						res.send(error[2])
 					}
 					else {
 						error[0].message = "already logged in"
@@ -175,4 +176,10 @@ function doctor_update(req, res) {
 		res.send(error[0])
 	}
 }
-module.exports = { signup, login, logout, doctor_update };
+
+function hospital_list(req, res) {
+	model.find("hospital", {}, function (hospital_data) {
+		res.send(hospital_data)
+	})
+}
+module.exports = { register, login, logout, doctor_update, hospital_list };

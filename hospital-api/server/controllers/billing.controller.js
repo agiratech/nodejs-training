@@ -9,7 +9,15 @@ var model = require('../models/doctor.model')
 var ObjectId = require('mongodb').ObjectId
 var validate = require('../services/validation')
 var error = require('../services/message')
+var axios = require('axios')
 
+function billing_get(req,res) {
+	model.find("charge", {}, function (charge_data) {
+		res.send(charge_data)
+	// res.send("get method working...")
+	})
+	
+}
 function billing_create(req, res) {
 	var auth_data = res.locals.result;
 	var doctor_id = auth_data[0]._id;
@@ -179,4 +187,4 @@ function billing_update(req, res) {
 		})
 	}
 }
-module.exports = { billing_create, billing_delete, billing_read, billing_update };
+module.exports = { billing_create, billing_delete, billing_read, billing_update, billing_get };
