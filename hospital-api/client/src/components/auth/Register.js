@@ -39,6 +39,10 @@ class Register extends Component {
         if(res.status==='200') {
           this.props.history.replace('/login')
         }
+        if(res.status==='404') {
+          document.getElementById('email_error').style.color = 'red';
+          document.getElementById('email_error').innerHTML = 'Mail Id already taken, try different one';
+        }
       })
     }
   }
@@ -76,7 +80,7 @@ class Register extends Component {
                   </div>
                 </div>
                 <div className="form-group">
-                  <label className="col-xs-3 control-label">Language</label>
+                  <label className="col-xs-3 control-label">Hospital</label>
                   <div className="col-xs-5 selectContainer">
                     <select required name="hospital_id" className="form-control" value={this.state.value} onChange={this.onChange}>
                       <option value="">select hospital</option>
@@ -121,6 +125,7 @@ class Register extends Component {
                   <label htmlFor="email">Enter Your Mail ID:</label>
                   <input type="email" className="form-control form-control-lg" placeholder="Email Address" name="email" value={this.state.email} onChange={this.onChange} required />
                   <div className="invalid-feedback">Enter a valid Mail address</div>
+                  <span id='email_error'></span>
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">Enter Password:</label>

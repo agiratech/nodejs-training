@@ -11,7 +11,9 @@ router.route('/billing_read')
   .post(authentication.check, billingCtrl.billing_read);
 router.route('/billing_update')
   .put(authentication.check, billingCtrl.billing_update);
-router.route('/billing_get')
-  .get(billingCtrl.billing_get)
+router.route('/billing_read_all')
+  .post(authentication.check, billingCtrl.billing_read_all);
+router.route('/charge_get')
+  .get(billingCtrl.charge_get)
 
 module.exports = router;

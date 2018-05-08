@@ -10,13 +10,14 @@ var ObjectId = require('mongodb').ObjectId
 var validate = require('../services/validation')
 var error = require('../services/message')
 var axios = require('axios')
+var _ = require('lodash');
 
-function billing_get(req,res) {
+function charge_get(req, res) {
 	model.find("charge", {}, function (charge_data) {
 		res.send(charge_data)
-	// res.send("get method working...")
+		// res.send("get method working...")
 	})
-	
+
 }
 function billing_create(req, res) {
 	var auth_data = res.locals.result;
@@ -30,9 +31,10 @@ function billing_create(req, res) {
 				model.find("charge", searchParam, function (charge_data) {
 					req.body.charge_id = charge_data[0]._id;
 					if (charge_data.length == 1) {
-						if (validate.empty(req.body.description) && validate.alpha(req.body.description)) {
+						if (validate.empty(req.body.description)) {
 							model.insert("patient", req.body, function (body_data) {
-								res.send(body_data)
+								error[1].message = "record created successfully";
+								res.send(error[1])
 							})
 						}
 						else {
@@ -110,7 +112,8 @@ function billing_read(req, res) {
 		model.find("patient", searchParam, function (patient_data) {
 			console.log(patient_data)
 			if (patient_data.length == 1) {
-				if (auth_data[0].hospital_id.equals(patient_data[0].hospital_id)) {
+				var transfer = ObjectId("5ab243ac73959deb3ad79fec");
+				if (auth_data[0].hospital_id.equals(patient_data[0].hospital_id) || patient_data[0].charge_id.equals(transfer)) {
 					res.json(patient_data)
 				}
 				else {
@@ -187,4 +190,29 @@ function billing_update(req, res) {
 		})
 	}
 }
-module.exports = { billing_create, billing_delete, billing_read, billing_update, billing_get };
+function billing_read_all(req, res) {
+	var auth_data = res.locals.result;
+	var searchParam = { token: auth_data[0].token }
+	model.find("doctor", searchParam, function (doctor_data) {
+		var searchParam1 = { doctor_id: doctor_data[0]._id }
+		model.find("patient", searchParam1, function (patient_data) {
+			var searchParam2 = { charge_id: ObjectId("5ab243ac73959deb3ad79fec") }
+			model.find("patient", searchParam2, function (patient_data2) {
+				var data = patient_data.concat(patient_data2)
+				var patientMap = new Map();
+				data.forEach(row => {
+					if (!patientMap.has(row._id.toString())) patientMap.set(row._id.toString(), row);
+				});
+				// One entry per unique ID now
+				function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+				for (var value of patientMap.values()) {
+					// res.send(value);
+				};
+				var newArray = [].concat(_toConsumableArray(patientMap.values()));
+				console.log(newArray);
+				res.send(newArray);
+			})
+		})
+	})
+}
+module.exports = { billing_create, billing_delete, billing_read, billing_update, charge_get, billing_read_all };

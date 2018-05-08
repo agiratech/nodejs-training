@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import AuthService from '../../services/AuthService'
 
 class Navbar extends Component {
-  constructor(){
+  constructor() {
     super()
     this.Auth = new AuthService();
   }
@@ -16,15 +16,17 @@ class Navbar extends Component {
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
               <span className="navbar-toggler-icon"></span>
             </button>
-
             <div className="collapse navbar-collapse" id="mobile-nav">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <Link to="/profiles" className="nav-link"> Developers
-              </Link>
+                  {/* <Link to="/profiles" className="nav-link"> Developers */}
+              {/* </Link> */}
                 </li>
               </ul>
               <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <Link to="/profile" className="nav-link" >My Profile</Link>
+                </li>
                 <li className="nav-item">
                   <Link to="/logout" className="nav-link" >Logout</Link>
                 </li>
@@ -32,7 +34,6 @@ class Navbar extends Component {
             </div>
           </div>
         </nav>
-
       )
     } else {
       return (

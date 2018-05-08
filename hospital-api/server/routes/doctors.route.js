@@ -15,5 +15,7 @@ router.route('/doctor_update')
   .put(authentication.check, doctorCtrl.doctor_update);
 router.route('/hospital_list')
   .get(doctorCtrl.hospital_list);
+router.route('/doctor_profile')
+  .post(authentication.check,doctorCtrl.doctor_profile);
 
 module.exports = router;

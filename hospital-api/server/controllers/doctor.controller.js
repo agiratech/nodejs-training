@@ -30,7 +30,8 @@ function register(req, res) {
 													delete req.body.confirm_password;
 													req.body.password = password_data;
 													model.insert("doctor", req.body, function (body_data) {
-														res.send(body_data)
+														error[1].message="new doctor record created succesfully"
+														res.send(error[1])
 													})
 												})
 											}
@@ -103,8 +104,9 @@ function login(req, res) {
 						res.send(error[2])
 					}
 					else {
-						error[0].message = "already logged in"
-						res.send(error[0])
+						error[2].token=user_data[0].token;
+						error[2].message = "already logged in"
+						res.send(error[2])
 					}
 				}
 				else {
@@ -133,27 +135,27 @@ function doctor_update(req, res) {
 			if (auth_data[0].email == req.body.new_email || email_data.length == 0) {
 				if (validate.empty(req.body.name) && validate.alpha(req.body.name) && validate.length(req.body.name)) {
 					if (validate.empty(req.body.designation) && validate.alpha(req.body.designation) && validate.length(req.body.designation)) {
-						if (validate.empty(req.body.password) && validate.length(req.body.password)) {
-							if (validate.confirm_password(req.body.password, req.body.confirm_password)) {
-								req.body.password = validate.encrypt_password(req.body.password, function (encrypt_data) {
-									delete req.body.confirm_password;
-									req.body.password = encrypt_data;
+						// if (validate.empty(req.body.password) && validate.length(req.body.password)) {
+							// if (validate.confirm_password(req.body.password, req.body.confirm_password)) {
+								// req.body.password = validate.encrypt_password(req.body.password, function (encrypt_data) {
+								// 	delete req.body.confirm_password;
+								// 	req.body.password = encrypt_data;
 									var matchset = { _id: auth_data[0]._id }
-									var updateset = { email: req.body.new_email, name: req.body.name, password: req.body.password, designation: req.body.designation };
+									var updateset = { email: req.body.new_email, name: req.body.name, designation: req.body.designation };
 									model.update("doctor", matchset, updateset)
 									error[1].message = "record updated successfully";
 									res.send(error[1])
-								})
-							}
-							else {
-								error[0].message = "password mismatch"
-								res.send(error[0])
-							}
-						}
-						else {
-							error[0].message = "enter a proper password"
-							res.send(error[0])
-						}
+								// })
+							// }
+							// else {
+							// 	error[0].message = "password mismatch"
+							// 	res.send(error[0])
+							// }
+						// }
+						// else {
+						// 	error[0].message = "enter a proper password"
+						// 	res.send(error[0])
+						// }
 					}
 					else {
 						error[0].message = "enter a proper designation"
@@ -182,4 +184,10 @@ function hospital_list(req, res) {
 		res.send(hospital_data)
 	})
 }
-module.exports = { register, login, logout, doctor_update, hospital_list };
+
+function doctor_profile(req,res) {
+	model.find("doctor", { token: req.headers.token }, function (doctor_data) {
+		res.send(doctor_data)
+	})
+}
+module.exports = { register, login, logout, doctor_update, hospital_list, doctor_profile };

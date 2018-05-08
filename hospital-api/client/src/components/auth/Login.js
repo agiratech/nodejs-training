@@ -7,18 +7,12 @@ class Login extends Component {
     super()
     this.state = {
       email: '',
-      password: '',
-      errors: {}
+      password: ''
     }
     this.Auth = new AuthService();
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.setToken = this.setToken.bind(this);
   }
-  // componentWillMount() {
-  //   service.billing().then((messages) => {
-  //   })
-  // }
   componentWillMount() {
     if (this.Auth.loggedIn())
       this.props.history.replace('/dashboard');
@@ -36,20 +30,18 @@ class Login extends Component {
     if (form1.checkValidity() === true) {
       this.Auth.login(user)
         .then(res => {
-          if(this.Auth.getToken())
-          {
-            this.props.history.replace('/dashboard');
+          if (this.Auth.getToken()) {
+            this.props.history.replace('/dashboard')
+          }
+          if (res.status === '404') {
+            document.getElementById('error').style.color = 'red';
+            document.getElementById('error').innerHTML = 'Mail Id or Password is Incorrect';
           }
         })
         .catch(err => {
           console.log(err);
         })
-      // service.login(user).then(res => {
-      // })
     }
-  }
-  setToken(Token) {
-    localStorage.setItem('token', Token)
   }
   render() {
     return (
@@ -61,6 +53,7 @@ class Login extends Component {
                 <h1 className="display-4 text-center">Log In</h1>
                 <p className="lead text-center">Sign in to your account</p>
                 <form id="login" onSubmit={this.onSubmit} noValidate>
+                  <span className="lead text-center" id='error'></span>
                   <div className="form-group">
                     <input type="email" className="form-control form-control-lg" placeholder="Email Address" name="email" onChange={this.onChange} required />
                     <div className="invalid-feedback">Enter valid email</div>
