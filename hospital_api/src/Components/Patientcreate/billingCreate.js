@@ -49,6 +49,16 @@ class billingCreate extends Component {
  		return (
       <div className="billingCreate">
       <header>
+      <nav class="navbar navbar-default">
+<div class="container-fluid">
+<div class="navbar-header">
+<a class="nav navbar-nav" href="/doctorUpdate">Update Doctor's Page</a>
+</div>
+<ul class="nav navbar-nav">
+<li class="active"><a href="/loginint">Logout</a></li>
+</ul>
+</div>
+</nav>
         <h2> Patient Signup Page </h2>
       </header>
       <form onSubmit={this.onSubmit}>

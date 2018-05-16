@@ -13,10 +13,18 @@ class Delete extends Component {
     return (
       <div className="App">
         <header className="App-header">
+        <nav class="navbar navbar-default">
+<div class="container-fluid">
+<div class="navbar-header">
+<a class="nav navbar-nav" href="/doctorUpdate">Update Doctor's Page</a>
+</div>
+<ul class="nav navbar-nav">
+<li class="active"><a href="/loginint">Logout</a></li>
+</ul>
+</div>
+</nav>
           <img src={logo} className="App-logo" alt="logo" />      
           <h2>Successfully deleted the patient record</h2><br/><br/>
-             <Link to={'/loginint'}>Logout</Link><br/><br/>
-             <Link to={'/'}>Go To Homepage</Link><br/><br/>
              <Link to={'/billingRead'}>Go to Read page</Link>
         </header>        
       </div>

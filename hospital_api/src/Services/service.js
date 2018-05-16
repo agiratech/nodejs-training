@@ -1,10 +1,10 @@
     import axios from 'axios';
-    export function login(user) {
+    export function login(user) {//login page
       return axios.post('/doctor/login', user)
       .then(res => {console.log(res.data); return res.data})
       .catch(err => {console.log(err); return err})
     }
-    export function SignUp(user) {
+    export function SignUp(user) {//signup page
       return axios.post('/doctor/signup', user)
       .then(res => {console.log(res.data); return res.data})
       .catch(err => {console.log(err); return err})
@@ -15,10 +15,8 @@
       .catch(err => {console.log(err); return err})
     }
     export function doctor(user) {//show the details of the doctor logged in 
-      // console.log("doctor list call", user)
       return axios.get('/doctor/doclist',{headers:{"token":localStorage.getItem("token")}})
       .then(res => {
-        // console.log("ddddddddddddddddddddddddd",res.data)
         return res.data})
       .catch(err => {console.log(err); return err})
     }
@@ -47,26 +45,25 @@
         return res.data})
       .catch(err => {console.log(err); return err})
     }
-    export function billingRead(token, patient_id) {
+    export function billingRead(token, patient_id) {//reading the patient details
       return axios.post('/billing/billingRead',{ 'patient_id': patient_id},{headers: {"token":localStorage.getItem("token")}})
         .then(res => { console.log(res.data); return res.data })
         .catch(err => { console.log(err); return err })
     }
-    export function billingReaddet(token, user) {
+    export function billingReaddet(token, user) {//updating the doctor details
       return axios.post('/billing/billingListDet',user,{headers:{"token":localStorage.getItem("token")}})
       .then(res => {
         console.log("pat read details",res.data)
         return res.data})
       .catch(err => {console.log(err); return err})
     }
-    export function billingUpdate(user) {
+    export function billingUpdate(user) {//updating the patient details
       return axios.put('/billing/billingUpdate',user,{headers:{"token":localStorage.getItem("token")}})
       .then(res => {
-        // console.log("Azsxdcfvgbhjnmkkkkkkjnhbgvfcxdzsxdfcvg",res.data)
         return res.data})
       .catch(err => {console.log(err); return err})
     }
-    export function billingDelete(token,user) {
+    export function billingDelete(token,user) {//deleting the patient details
       return axios.delete('/billing/billingDelete',{headers:{"token":localStorage.getItem("token")},data:{patient_id: user}})
       .then(res => {
         console.log("Entered the billingDelete",res.data)

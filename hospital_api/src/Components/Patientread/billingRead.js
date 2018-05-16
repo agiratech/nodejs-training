@@ -51,11 +51,21 @@ class billingRead extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
   render() {
-    const { patientDetails_all, patientDetails } = this.state
+    const { patientDetails_all, patientDetails, hospital_name, charge_name, patient_id } = this.state
     return (
-      <div className="doctorUpdate">
+      <div className="billingRead">
 			<header>
-			<h2> Patient Read </h2>
+			<nav class="navbar navbar-default">
+<div class="container-fluid">
+<div class="navbar-header">
+<a class="nav navbar-nav" href="/doctorUpdate">Update Doctor's Page</a>
+</div>
+<ul class="nav navbar-nav">
+<li class="active"><a href="/loginint">Logout</a></li>
+</ul>
+</div>
+</nav>
+			<h2> Patient Read</h2>
 		</header>
 		<form onSubmit={this.onSubmit}>
 			<br/><br/><br/>
@@ -67,7 +77,6 @@ class billingRead extends Component {
 </select>
 <br/><br/>
 <input type="submit" value='Read patient details'/><br/><br/>
-<Link to={'/'}>Back To Home</Link>
 </form><br/><br/>
 	<div className="container">
 		<table className="table">

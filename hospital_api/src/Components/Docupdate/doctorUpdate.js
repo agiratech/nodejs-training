@@ -62,6 +62,15 @@ render()
 	return (
 		<div className="doctorUpdate">
 		<header>
+		<nav class="navbar navbar-default">
+<div class="container-fluid">
+<div class="navbar-header">
+</div>
+<ul class="nav navbar-nav">
+<li class="active"><a href="/loginint">Logout</a></li>
+</ul>
+</div>
+</nav>
 			<h2> Doctor Updation </h2>
 		</header>
 		<form onSubmit={this.onSubmit}>
@@ -87,9 +96,9 @@ render()
 								</select><br/><br/>
 			Username: <input name="username" onChange={this.onChange}  value={this.state.username} placeholder='Email' type="email" required/><br/><br/>
 			Password: <input name="pwd" onChange={this.onChange} placeholder='Password' type='password' id="pwd" onKeyUp={this.check} required/><br/><br/>
-			Confirm Password: <input name= 'conpwd' onChange={this.onChange} placeholder='Confirm Password' id="pwd" onKeyUp={this.check} type ='password' required/><br/><br/>
+			Confirm Password: <input name= 'conpwd' onChange={this.onChange} placeholder='Confirm Password' id="conpwd" onKeyUp={this.check} type ='password' required/>
+			<span id='message'></span><br/><br/>
 			<input type='submit' value='Update'/><br/><br/>
-			<Link to={'/'}>Back To Home</Link>
 			</form>
 			</div>
 		);

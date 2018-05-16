@@ -31,6 +31,8 @@ class Form extends Component {
       pwd:this.state.pwd}
       service.login(log).then(res=>{
         if(res.code==="23" || res.code==="26"){
+          // alert("Invalid username or password")
+          document.getElementById("error").innerHTML="Invalid username or password"
           this.props.history.replace('/login')
         }
         else
@@ -102,7 +104,9 @@ class Form extends Component {
         </div>
         <button type="submit" className="btn btn-primary" disabled={!this.state.formValid}>Login</button><br/><br/>
         <Link to={'/Signup'}>Signup</Link><br/><br/>
+        <div id="error"></div>
       </form>
+     
     )
   }
 }

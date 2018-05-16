@@ -32,12 +32,17 @@ onSubmit(e)
      return (
       <div className="App">
       <header>
-        <h2> Successfully Logged In </h2>
+      <nav className="navbar navbar-default">
+  <div className="container-fluid">
+    <ul className="nav navbar-nav">
+    <li className="active"><a href="/doctorUpdate">Update Doctor's Profile</a></li>
+    </ul>
+  </div>
+</nav>
       </header>
       <form onSubmit={this.onSubmit}>
         <br/><br/><br/>
         <input type='submit' value='Logout'/><br/><br/>
-        <Link to={'/doctorUpdate'}>Back To Doctor Updation Page</Link>
         </form>
       </div>
          

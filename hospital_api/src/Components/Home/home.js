@@ -12,7 +12,7 @@ class Home extends Component {
           <img src={logo} className="App-logo" alt="logo" />      
           <h2>Welcome to the homepage of hospital api</h2>
              <Route exact path='/login' component={Form} />
-             <Route exact path='/signup' component={Signup} /><br/><br/>
+             <Route exact path='/signup' component={Signup} /><br/><br/><br/><br/>
              <Link to={'/login'}>Login</Link><br/><br/>
              <Link to={'/signup'}>Signup</Link><br/><br/>
              <Link to={'/loginint'}>Logout</Link><br/><br/>             

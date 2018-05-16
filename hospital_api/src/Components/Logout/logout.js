@@ -14,8 +14,7 @@ class Logout extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />      
-          <h2>Successfully Logged Out</h2><br/><br/>
-             <Link to={'/login'}>Go To Login</Link><br/><br/>
+          <h2>Successfully Logged Out</h2><br/><br/><br/><br/>
              <Link to={'/'}>Go To Homepage</Link>
         </header>        
       </div>
