@@ -73,7 +73,6 @@ class Form extends Component {
 
   if(localStorage.getItem('token' === "undefined")){
     console.log("ppppppppprrrrr")
-    alert("Doctor is already logged in. Please logout to login")
   this.props.history.replace('/login')
 }
   }
