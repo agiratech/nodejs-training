@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import {} from 'react-router-dom';
 import * as service from '../../Services/service';
 class doctorUpdate extends Component {
 constructor(props) {
@@ -67,7 +67,7 @@ render()
 <div class="navbar-header">
 </div>
 <ul class="nav navbar-nav">
-<li class="active"><a href="/loginint">Logout</a></li>
+<li class="active"><a href="/logout">Logout</a></li>
 </ul>
 </div>
 </nav>
@@ -98,7 +98,7 @@ render()
 			Password: <input name="pwd" onChange={this.onChange} placeholder='Password' type='password' id="pwd" onKeyUp={this.check} required/><br/><br/>
 			Confirm Password: <input name= 'conpwd' onChange={this.onChange} placeholder='Confirm Password' id="conpwd" onKeyUp={this.check} type ='password' required/>
 			<span id='message'></span><br/><br/>
-			<input type='submit' value='Update'/><br/><br/>
+				<input type='submit' value='Update'/><br/><br/>
 			</form>
 			</div>
 		);

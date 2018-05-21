@@ -39,7 +39,9 @@ class SignUp extends Component {
     }
       service.SignUp(newDoc).then(res=>{
         if(res.code === "15" || res.code === "22" || res.code === "23" || res.code === "17" || res.code === "16"){
-          alert("please check for the signup credentials")
+          // alert("please check for the signup credentials")
+          console.log("Signup")
+          document.getElementById("error").innerHTML="Username already exist"
           this.props.history.replace('/signup')
         }
         }).then(this.props.history.replace('/login'))
@@ -100,6 +102,7 @@ class SignUp extends Component {
         <span id='message'></span><br/><br/>
         <input type='submit' value='submit'/><br/><br/>
         <Link to={'/login'}>Go To Login</Link><br/><br/>
+        <div id="error"></div>
         </form>
 				</div>
 			);

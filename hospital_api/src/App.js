@@ -3,7 +3,6 @@ import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './Components/Home/home';
 import Signup from './Components/Signup/signup';
-import Loginint from './Components/Loginint/loginint';
 import Logout from './Components/Logout/logout';
 import Docupdate from './Components/Docupdate/doctorUpdate';
 import Docupsuccess from './Components/Docupsuccess/docupsuccess';
@@ -20,7 +19,6 @@ class App extends Component {
        <div className="App">
              <Route exact path='/' component={Home} />
              <Route exact path='/signup' component={Signup} />
-             <Route exact path='/loginint' component={Loginint} />
              <Route exact path='/logout' component={Logout} />
              <Route exact path='/doctorUpdate' component={Docupdate} />
              <Route exact path='/docupsuccess' component={Docupsuccess} />

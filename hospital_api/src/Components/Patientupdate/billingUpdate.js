@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import {} from 'react-router-dom';
 import * as service from '../../Services/service';
-import billingRead from '../Patientread/billingRead';
 class billingUpdate extends Component {
 constructor(props) {
 	super(props);
@@ -72,13 +71,13 @@ render()
 return (
 <div className="billingUpdate">
 <header>
-<nav class="navbar navbar-default">
-<div class="container-fluid">
-<div class="navbar-header">
-<a class="nav navbar-nav" href="/doctorUpdate">Update Doctor's Page</a>
-</div>
-<ul class="nav navbar-nav">
-<li class="active"><a href="/loginint">Logout</a></li>
+<nav className="navbar navbar-default">
+<div className="container-fluid">
+<div className="navbar-header">
+<a className="nav navbar-nav" href="/doctorUpdate">Update Doctor's Page</a>
+</div>	
+<ul className="nav navbar-nav">
+<li className="active"><a href="/logout">Logout</a></li>
 </ul>
 </div>
 </nav>

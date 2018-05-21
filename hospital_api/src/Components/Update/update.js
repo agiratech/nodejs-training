@@ -13,13 +13,13 @@ class Update extends Component {
     return (
       <div className="App">
         <header className="App-header">
-        <nav class="navbar navbar-default">
-<div class="container-fluid">
-<div class="navbar-header">
-<a class="nav navbar-nav" href="/doctorUpdate">Update Doctor's Page</a>
+        <nav className="navbar navbar-default">
+<div className="container-fluid">
+<div className="navbar-header">
+<a className="nav navbar-nav" href="/doctorUpdate">Update Doctor's Page</a>
 </div>
-<ul class="nav navbar-nav">
-<li class="active"><a href="/loginint">Logout</a></li>
+<ul className="nav navbar-nav">
+<li className="active"><a href="/logout">Logout</a></li>
 </ul>
 </div>
 </nav>

@@ -19,7 +19,7 @@ class Delete extends Component {
 <a class="nav navbar-nav" href="/doctorUpdate">Update Doctor's Page</a>
 </div>
 <ul class="nav navbar-nav">
-<li class="active"><a href="/loginint">Logout</a></li>
+<li class="active"><a href="/logout">Logout</a></li>
 </ul>
 </div>
 </nav>
