@@ -15,7 +15,7 @@ class Home extends Component {
              <Route exact path='/signup' component={Signup} /><br/><br/><br/><br/>
              <Link to={'/login'}>Login</Link><br/><br/>
              <Link to={'/signup'}>Signup</Link><br/><br/>
-             <Link to={'/loginint'}>Logout</Link><br/><br/>             
+             <Link to={'/logout'}>Logout</Link><br/><br/>             
         </header>        
       </div>
     );
